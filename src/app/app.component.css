@@ -1,3 +1,11 @@
 .container {
   margin-top: 30px;
 }
+
+input.ng-invalid {
+  border: solid 2px red;
+}
+
+span {
+  color: brown;
+}

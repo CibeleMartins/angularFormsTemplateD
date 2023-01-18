@@ -9,8 +9,9 @@
           </div>
           <button class="btn btn-default" type="button">Suggest an Username</button>
           <div class="form-group">
-            <label ngModel name="email" for="email">Mail</label>
-            <input type="email" id="email" class="form-control">
+            <label for="email">Mail</label>
+            <input required email ngModel name="email" type="email" id="email" class="form-control">
+            <span *ngIf="refLocalForm.controls.email.invalid">Insert a valid e-mail must contain "@".</span>
           </div>
         </div>
         <div class="form-group">
@@ -20,7 +21,7 @@
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button [disabled]="!refLocalForm.valid" class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
   </div>
