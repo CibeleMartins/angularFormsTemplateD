@@ -1,27 +1,21 @@
-# FirstApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+Bem vindo ao Angular Forms Template Driven
 
-## Development server
+Sobre
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+O Angular oferece duas abordagens quando se trata de formulários: Abordagem orientada a modelos e Abordagem reativa.
 
-## Code scaffolding
+Abordagem orientada a modelos: é chamda assim porque é possível configurar todo o formulário no código html, e o 
+Angular infere a estrutura do formulário com uma representação JavaScript.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Abordagem reativa: é uma abordagem mais complexa, na qual a estrutura do formulário é definida no código TypeScript,
+o código HTML é configurado, e depois essas partes são conectadas manualmente.
 
-## Build
+O módulo "FormsModule" inclui muitas funcinalidades para formulários. Esse módulo cria uma representação de objeto JavaScript quando detecta uma tag <form> em um documento HTML. Dentro dessa representação JavaScript do formulário há muitas propriedades e métodos que permitem aplicar validação, setar valores de maneira padrão ou com a ocorrencia de algum evento.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para ter acesso a essa representação JavaScript do formulário, é necessário inserir uma referencia local na tag <form>
+e adicionar a ela um valor em string como: "ngForm". Depois disso, para acessar essa referencia local no arquivo .ts do componente,é necessário importar "ViewChild", chamar o decorator c/ "@ViewChild()" e   @ViewChild('nome da ref local', { static: false }) nome da propriedade: NgForm <- tipo;
 
-## Running unit tests
+A partir dessa propriedade que foi criada com a referencia local do formulário é possível acessar todas as propriedades e 
+métodos da representação JavaScript do formulário que foi criada pelo Angular.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
