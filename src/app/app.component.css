@@ -3,49 +3,5 @@
 }
 
 input.ng-invalid.ng-touched {
-  border: solid 1px red;
-}
-
-span {
-  color: brown;
-}
-
-div.ng-touched.ng-pristine.ng-invalid {
-  border: solid 1px red;
-  border-radius: 10px;
-}
-
-div.ng-touched.ng-pristine.ng-valid {
-  border: solid 1px red;
-  border-radius: 10px;
-}
-
-#pad {
-  padding: 20px;
-}
-
-
-#user-data{
-  padding: 20px;
-}
-
-button {
-  margin-left: 30px;
-}
-
-p {
-  padding: 20px;
-}
-
-.containerRadio {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 30px;
-}
-
-#gender {
- display: flex;
- width: 15%;
- justify-content: space-evenly;
+  border: 1px solid red;
 }

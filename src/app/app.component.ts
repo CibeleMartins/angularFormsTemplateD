@@ -3,54 +3,53 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl:'./app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  @ViewChild("refLocalForm") refLocalForm: NgForm;
-
-  defaultQuestion = 'pet';
-  answer = "";
-  genderM = "Masculino";
-  genderF = "Feminino";
+  @ViewChild('f', { static: false }) signupForm: NgForm;
+  defaultQuestion = 'teacher';
+  answer = '';
+  genders = ['male', 'female'];
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    answer: '',
+    gender: ''
+  };
+  submitted = false;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
-
-    /**
-     * Essa não é a melhor abordagem porque é necessário sobrepor todos 
-     * os valores dos inputs/controles do formulário após e execução do método 
-     * suggestUserName(). Em outras palavras, o pathValue pode ser usado para sobrepor 
-     * valores de inputs/controles do formulário em geral.
-     */
-    this.refLocalForm.setValue({
+    // this.signupForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'pet',
+    //   questionAnswer: '',
+    //   gender: 'male'
+    // });
+    this.signupForm.form.patchValue({
       userData: {
-        username: suggestedName,
-        email: 'superuser@gmail.com'
-      },
-      userQuestion: {
-        questionAnswer: 'Bily billy'
+        username: suggestedName
       }
-    })
-
-    /**
-     * Com essa abordagem, é possível alterar o valor apenas do
-     * input/controle necessário dentro do formulário. Em outras palavras,
-     * o pathValue pode ser usado para sobrepor o valor de partes do formulário.
-     *
-     *
-     */
-    this.refLocalForm.form.patchValue({userData: {
-      username: suggestedName
-    }})
+    });
   }
 
-  // onSubmit(ref: NgForm) {
-  //   console.log(ref)
+  // onSubmit(form: NgForm) {
+  //   console.log(form);
   // }
 
   onSubmit() {
-    return console.log(this.refLocalForm)
+    this.submitted = true;
+    this.user.username = this.signupForm.value.userData.username;
+    this.user.email = this.signupForm.value.userData.email;
+    this.user.secretQuestion = this.signupForm.value.secret;
+    this.user.answer = this.signupForm.value.questionAnswer;
+    this.user.gender = this.signupForm.value.gender;
+
+    this.signupForm.reset();
   }
 }
