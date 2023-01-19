@@ -10,8 +10,21 @@ export class AppComponent {
 
   @ViewChild("refLocalForm") refLocalForm: NgForm;
 
+  defaultQuestion = 'pet';
+  answer = "";
+
   suggestUserName() {
     const suggestedName = 'Superuser';
+
+    this.refLocalForm.setValue({
+      userData: {
+        username: suggestedName,
+        email: ''
+      },
+      userQuestion: {
+        questionAnswer: ''
+      }
+    })
   }
 
   // onSubmit(ref: NgForm) {
