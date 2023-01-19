@@ -12,6 +12,8 @@ export class AppComponent {
 
   defaultQuestion = 'pet';
   answer = "";
+  genderM = "Masculino";
+  genderF = "Feminino";
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -22,15 +24,15 @@ export class AppComponent {
      * suggestUserName(). Em outras palavras, o pathValue pode ser usado para sobrepor 
      * valores de inputs/controles do formulário em geral.
      */
-    // this.refLocalForm.setValue({
-    //   userData: {
-    //     username: suggestedName,
-    //     email: ''
-    //   },
-    //   userQuestion: {
-    //     questionAnswer: ''
-    //   }
-    // })
+    this.refLocalForm.setValue({
+      userData: {
+        username: suggestedName,
+        email: 'superuser@gmail.com'
+      },
+      userQuestion: {
+        questionAnswer: 'Bily billy'
+      }
+    })
 
     /**
      * Com essa abordagem, é possível alterar o valor apenas do
@@ -39,7 +41,6 @@ export class AppComponent {
      *
      *
      */
-
     this.refLocalForm.form.patchValue({userData: {
       username: suggestedName
     }})

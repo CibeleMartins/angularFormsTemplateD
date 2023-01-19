@@ -36,3 +36,16 @@ button {
 p {
   padding: 20px;
 }
+
+.containerRadio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 30px;
+}
+
+#gender {
+ display: flex;
+ width: 15%;
+ justify-content: space-evenly;
+}
