@@ -16,15 +16,33 @@ export class AppComponent {
   suggestUserName() {
     const suggestedName = 'Superuser';
 
-    this.refLocalForm.setValue({
-      userData: {
-        username: suggestedName,
-        email: ''
-      },
-      userQuestion: {
-        questionAnswer: ''
-      }
-    })
+    /**
+     * Essa não é a melhor abordagem porque é necessário sobrepor todos 
+     * os valores dos inputs/controles do formulário após e execução do método 
+     * suggestUserName(). Em outras palavras, o pathValue pode ser usado para sobrepor 
+     * valores de inputs/controles do formulário em geral.
+     */
+    // this.refLocalForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   userQuestion: {
+    //     questionAnswer: ''
+    //   }
+    // })
+
+    /**
+     * Com essa abordagem, é possível alterar o valor apenas do
+     * input/controle necessário dentro do formulário. Em outras palavras,
+     * o pathValue pode ser usado para sobrepor o valor de partes do formulário.
+     *
+     *
+     */
+
+    this.refLocalForm.form.patchValue({userData: {
+      username: suggestedName
+    }})
   }
 
   // onSubmit(ref: NgForm) {
