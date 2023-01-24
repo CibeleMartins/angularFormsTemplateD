@@ -16,9 +16,18 @@ export class ProjectFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.challengeForm = new FormGroup({
-      'name': new FormControl(null, Validators.required, null),
+      'name': new FormControl(null, [Validators.required, this.validatorName], null),
       'email': new FormControl(null, [Validators.email, Validators.required], null),
     })
+  }
+
+
+  validatorName(control: FormControl): {[s: string] : boolean} {
+
+    if(control.value === "Test") {
+      return {'nameIsNotPermited': true}
+    }
+    return null;
   }
 
 }
