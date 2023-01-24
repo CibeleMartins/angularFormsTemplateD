@@ -14,10 +14,10 @@ export class FormsReactiveComponent implements OnInit {
   ngOnInit() {
 
     this.forms = new FormGroup({
+      'username': new FormControl(null,Validators.required, null),
       'email': new FormControl(null, [Validators.required, Validators.email], null),
       'password': new FormControl(null, Validators.minLength(6), null),
       'gender': new FormControl(this.genders[0])
-
     })
   }
 }
