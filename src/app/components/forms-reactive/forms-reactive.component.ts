@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forms-reactive',
@@ -10,14 +10,38 @@ export class FormsReactiveComponent implements OnInit {
 
   forms: FormGroup;
   genders = ['male', 'female'];
+  biddenUsernames = ['Ana', 'Maria', 'Ricardo'];
 
   ngOnInit() {
 
     this.forms = new FormGroup({
-      'username': new FormControl(null,Validators.required, null),
-      'email': new FormControl(null, [Validators.required, Validators.email], null),
-      'password': new FormControl(null, Validators.minLength(6), null),
-      'gender': new FormControl(this.genders[0])
+      'userData': new FormGroup({
+        'username': new FormControl(null,[Validators.required, this.forBiddenUsernames.bind(this)], null),
+        'email': new FormControl(null, [Validators.required, Validators.email], null),
+        'password': new FormControl(null, Validators.minLength(6), null),
+      }),
+      'gender': new FormControl(this.genders[0]),
+      'hobbies': new FormArray([])
     })
+  }
+
+  onAddHobbie() {
+
+    const control = new FormControl(null, Validators.required, null);
+
+    (<FormArray> this.forms.get('hobbies')).push(control);
+  }
+
+  getControls() {
+    return (<FormArray>this.forms.get('hobbies')).controls;
+  }
+
+  forBiddenUsernames(control: FormControl): {[s: string]: boolean} {
+
+    if(this.biddenUsernames.indexOf(control.value) !== -1) {
+      return {'usernameAlredyInUse': true}
+    }
+
+    return null;
   }
 }
