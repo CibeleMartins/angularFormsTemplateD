@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form [formGroup]="forms">
+      <form [formGroup]="forms" (ngSubmit)="submitt()">
         <div formGroupName="userData">
           <div class="form-group">
             <label for="username">Nome de usuário</label>
@@ -37,6 +37,7 @@
               class="form-control"
             />
           </div>
+          <span *ngIf="this.forms.get('userData.email').errors['emailAlredyInUse'] && this.forms.get('userData.email').touched">Este e-mail já está em uso</span>
         </div>
 
         <div class="radio" *ngFor="let gender of genders">
