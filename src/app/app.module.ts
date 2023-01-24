@@ -5,11 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FormsReactiveComponent } from './components/forms-reactive/forms-reactive.component';
+import { ProjectFormComponent } from './challenge/project-form/project-form.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        FormsReactiveComponent
+        FormsReactiveComponent,
+        ProjectFormComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

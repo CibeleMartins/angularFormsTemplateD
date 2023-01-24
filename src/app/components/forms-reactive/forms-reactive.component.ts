@@ -24,6 +24,15 @@ export class FormsReactiveComponent implements OnInit {
       'gender': new FormControl(this.genders[0]),
       'hobbies': new FormArray([])
     })
+
+
+    this.forms.valueChanges.subscribe((value)=> {
+        console.log(value.userData.username)
+    })
+
+    this.forms.statusChanges.subscribe((status)=> {
+      console.log(status)
+    })
   }
 
   submitt() {
