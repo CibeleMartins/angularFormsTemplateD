@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-project-form',
@@ -17,8 +18,12 @@ export class ProjectFormComponent implements OnInit {
 
     this.challengeForm = new FormGroup({
       'name': new FormControl(null, [Validators.required, this.validatorName], null),
-      'email': new FormControl(null, [Validators.email, Validators.required], null),
+      'email': new FormControl(null, [Validators.email, Validators.required], this.asyncValidatorName),
     })
+  }
+
+  submit() {
+
   }
 
 
@@ -28,6 +33,20 @@ export class ProjectFormComponent implements OnInit {
       return {'nameIsNotPermited': true}
     }
     return null;
+  }
+
+  asyncValidatorName(control:  FormControl): Promise<any> | Observable<any> {
+
+    const promise = new Promise((resolve, reject)=> {
+
+      if(control.value === "Test") {
+        resolve({'nameIsNotPermited': true})
+      } else {
+        resolve(null)
+      }
+    })
+
+    return promise;
   }
 
 }

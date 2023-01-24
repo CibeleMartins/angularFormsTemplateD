@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <form class="container-forms">
+    <form [formGroup]="challengeForm" (ngSubmit)="submit()" class="container-forms">
       <div class="form-group">
-        <input placeholder="Nome do projeto" [ngStyle]="{ width: '100%' }" class="form-control" type="text" />
-        <input placeholder="E-mail" [ngStyle]="{ width: '100%' }" class="form-control" type="text" />
+        <input formControlName="name" placeholder="Nome do projeto" [ngStyle]="{ width: '100%' }" class="form-control" type="text" />
+        <input formControlName="email" placeholder="E-mail" [ngStyle]="{ width: '100%' }" class="form-control" type="text" />
 
         <div class="dropdown">
             <button>Status do projeto</button>
             <div class="dropdown-content">
-              <a>Estável</a>
-              <a>Crítico</a>
-              <a>Finalizado</a>
+              <option>Estável</option>
+              <option>Crítico</option>
+              <option>Finalizado</option>
             </div>
       </div>
       </div>
